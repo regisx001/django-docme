@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+	<meta charset="utf-8" />
+
+	<link rel="icon" href="{% static '/favicon.png' %}" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+	<meta name="viewport" content="width=device-width" />
+	
+		<link rel="modulepreload" href="{% static '/_app/immutable/entry/start.a3e4a282.js' %}">
+		<link rel="modulepreload" href="{% static '/_app/immutable/chunks/index.1da8e345.js' %}">
+		<link rel="modulepreload" href="{% static '/_app/immutable/chunks/singletons.3b260ee7.js' %}">
+		<link rel="modulepreload" href="{% static '/_app/immutable/chunks/index.b9740d9d.js' %}">
+		<link rel="modulepreload" href="{% static '/_app/immutable/entry/app.8d5dd664.js' %}">
+</head>
+
+
+<body data-sveltekit-preload-data="hover" data-theme="crimson">
+	<div style="display: contents">
+			<script>
+				{
+					__sveltekit_k2lqtt = {
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("{% static '/_app/immutable/entry/start.a3e4a282.js' %}"),
+						import("{% static '/_app/immutable/entry/app.8d5dd664.js' %}")
+					]).then(([kit, app]) => {
+						kit.start(app, element);
+					});
+				}
+			</script>
+		</div>
+</body>
+
+
+</html>

@@ -1,0 +1,18 @@
+<script lang="ts">
+	import '@skeletonlabs/skeleton/themes/theme-crimson.css';
+
+	import '@skeletonlabs/skeleton/styles/skeleton.css';
+	import '../app.postcss';
+	import { docsSettings } from '$lib/stores';
+	import { onMount } from 'svelte';
+	import hljs from 'highlight.js';
+	import 'highlight.js/styles/github-dark.css';
+	import { storeHighlightJs } from '@skeletonlabs/skeleton';
+
+	storeHighlightJs.set(hljs);
+	onMount(() => {
+		$docsSettings.theme = 'modern';
+	});
+</script>
+
+<slot />
