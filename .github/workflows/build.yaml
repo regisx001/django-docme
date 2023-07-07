@@ -19,4 +19,25 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update Systeme package
-        run: sudo apt-get update
+        run: sudo apt-get update 
+      
+      # This one pull our code from the repo !!
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      
+      - name: Install pip
+        run: sudo apt install python3-pip
+
+      - name: Install requirements
+        run: pip install -r requirements.txt
+
+      - name: move package to the containing folder
+        run:  cp ./docme ./django-docme
+
+      - name: packaging
+        run: python3 setup.py sdist
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: django-docme
+          path: /dist/
