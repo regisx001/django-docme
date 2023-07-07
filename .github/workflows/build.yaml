@@ -63,7 +63,7 @@ jobs:
         with:
           draft: true
           prerelease: false
-          release_name: ${{ P_VERSION }}
+          release_name: $P_VERSION
           tag_name: ${{ github.ref }}
 
 
