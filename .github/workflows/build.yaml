@@ -38,20 +38,21 @@ jobs:
       - name: Install requirements
         run: python -m pip install -r requirements.txt
 
+      - name: install setuptools
+        run: python3 -m pip install --upgrade setuptools
+      
       - name: move package to the containing folder
         run:  mv ./docme ./django-docme && cd django-docme && ls
       
-      - name: install setuptools
-        run: pip install --upgrade setuptools
 
       - name: testing
-        run: python test.py sdist
+        run: ls && python test.py sdist
       
 
-      - name: packaging
-        run: python3 setup.py sdist
+      # - name: packaging
+      #   run: python3 setup.py sdist
       
-      - uses: actions/upload-artifact@v3
-        with:
-          name: django-docme
-          path: /dist/
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: django-docme
+      #     path: /dist/
