@@ -11,9 +11,6 @@ on:
 
   workflow_dispatch:
 
-env:
-  P_VERSION: 0.1
-
 jobs:
   execute_packaging:
     name: Install requirements and packaging the app 
@@ -63,7 +60,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }} 
         with:
           tag_name: ${{ github.ref }}
-          release_name: "Release ${{ P_VERSION }}"
+          release_name: Release 0.2
           body: Edit Later
           draft: true
           prerelease: false
@@ -75,6 +72,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: django-docme/dist/django-docme-${{ P_VERSION }}.tar.gz
-          asset_name: django-docme-${{ P_VERSION }}.tar.gz
+          asset_path: django-docme/dist/django-docme-0.2.tar.gz
+          asset_name: django-docme-0.2.tar.gz
           asset_content_type: application/gzip
