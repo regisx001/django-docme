@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 env:
-  PKG_VERSION: 0.1
+  PKG_VERSION: 0.3
 
 jobs:
   execute_packaging:
@@ -60,7 +60,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }} 
         with:
-          tag_name: ${{ github.ref }}
+          tag_name: v${{env.PKG_VERSION}}
           release_name: django-docme_v${{env.PKG_VERSION}}
           body: Edit Later
           draft: true
