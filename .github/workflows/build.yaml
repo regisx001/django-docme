@@ -2,8 +2,8 @@ name:  Build The Package
 
 
 on:
-  push:
-    branches: ["master"]
+  # push:
+  #   branches: ["master"]
   pull_request:
     types: [closed]
     branches: ['master']
