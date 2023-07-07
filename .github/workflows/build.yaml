@@ -25,6 +25,9 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       
+      - name: Install Python
+        run: sudo apt install python3
+
       - name: Install pip
         run: sudo apt install python3-pip
 
@@ -41,10 +44,10 @@ jobs:
         run: python test.py sdist
       
 
-      # - name: packaging
-      #   run: python setup.py sdist
+      - name: packaging
+        run: python3 setup.py sdist
       
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: django-docme
-      #     path: /dist/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: django-docme
+          path: /dist/
