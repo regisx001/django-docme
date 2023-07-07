@@ -1,0 +1,22 @@
+name:  Deploy to GitHub Pages
+
+
+on:
+  # removed
+  push:
+    branches: ["master"]
+  # added
+  pull_request:
+  # added
+    types: [closed]
+    branches: ['master']
+
+
+
+jobs:
+  execute_packaging:
+    name: Install requirements and packaging the app 
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update Systeme package
+        run: sudo apt-get update
