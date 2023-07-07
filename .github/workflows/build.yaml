@@ -80,6 +80,6 @@ jobs:
       - name: Deploy package
         uses: remorses/pypi@master
         with:
-          setupfile: /django-docme/setup.py
+          setupfile: ./django-docme/setup.py
           username: ${{ secrets.PYPI_USERNAME }}
           password: ${{ secrets.PYPI_PASSWORD }}
