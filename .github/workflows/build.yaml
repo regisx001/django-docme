@@ -18,7 +18,7 @@ jobs:
     name: Install requirements and packaging the app 
     runs-on: ubuntu-latest
     steps:
-      - name: Update Systeme package
+      - name: Update packages
         run: sudo apt-get update 
       
       # This one pull our code from the repo !!
@@ -32,12 +32,13 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: move package to the containing folder
-        run:  mv ./docme ./django-docme && cd django-docme
+        run:  mv ./docme ./django-docme && cd django-docme && ls
+        
 
-      - name: packaging
-        run: python3 setup.py sdist
+      # - name: packaging
+      #   run: python3 setup.py sdist
       
-      - uses: actions/upload-artifact@v3
-        with:
-          name: django-docme
-          path: /dist/
+      # - uses: actions/upload-artifact@v3
+      #   with:
+      #     name: django-docme
+      #     path: /dist/
