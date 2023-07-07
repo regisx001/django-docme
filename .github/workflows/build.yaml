@@ -32,11 +32,11 @@ jobs:
           python-version : '3.11'
         
 
-      - name: Install pip
-        run: sudo apt install python3-pip
+      # - name: Install pip
+      #   run: sudo apt install python3-pip
 
       - name: Install requirements
-        run: pip install -r requirements.txt
+        run: python -m pip install -r requirements.txt
 
       - name: move package to the containing folder
         run:  mv ./docme ./django-docme && cd django-docme && ls
