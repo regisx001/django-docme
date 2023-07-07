@@ -5,16 +5,17 @@ on:
   # removed
   push:
     branches: ["master"]
-  # added
   pull_request:
-  # added
     types: [closed]
     branches: ['master']
 
+  workflow_dispatch:
 
 
 jobs:
   execute_packaging:
+    env:
+      VERSION: 0.1
     name: Install requirements and packaging the app 
     runs-on: ubuntu-latest
     steps:
@@ -25,15 +26,10 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       
-      
       - name: Install Python
         uses: actions/setup-python@v4
         with:
           python-version : '3.11'
-        
-
-      # - name: Install pip
-      #   run: sudo apt install python3-pip
 
       - name: Install requirements
         run: python -m pip install -r requirements.txt
@@ -51,7 +47,6 @@ jobs:
 
       - name: packaging
         run: |
-
           cd django-docme
           python3 setup.py sdist
       
@@ -59,3 +54,25 @@ jobs:
         with:
           name: django-docme
           path: django-docme/dist/
+
+      - name: release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        id: create_release
+        with:
+          draft: true
+          prerelease: false
+          release_name: ${{ VERSION }}
+          tag_name: ${{ github.ref }}
+
+
+      - name: upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_path: django-docme/dist/django-docme-$VERSION.tar.gz
+          asset_name: azblogfilter.linux-amd64.tar.gz
+          asset_content_type: application/gzip
