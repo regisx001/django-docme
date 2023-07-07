@@ -76,11 +76,3 @@ jobs:
           asset_path: django-docme/dist/django-docme-${{env.PKG_VERSION}}.tar.gz
           asset_name: django-docme-${{env.PKG_VERSION}}.tar.gz
           asset_content_type: application/gzip
-
-      - name: Deploy Package
-        working-directory: ./django-docme
-        uses: remorses/pypi@master
-        with:
-          setup_file: ./setup.py
-          username: ${{ secrets.PYPI_USERNAME }}
-          password: ${{ secrets.PYPI_PASSWORD }}
