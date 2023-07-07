@@ -55,24 +55,26 @@ jobs:
           name: django-docme
           path: django-docme/dist/
 
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
-      - name: release
-        uses: actions/create-release@v1
+      
+      - name: Create Release
         id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: Edit Later
           draft: true
           prerelease: false
-          release_name: $P_VERSION
-          tag_name: ${{ github.ref }}
 
 
-      # - name: upload artifact
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
-      #   with:
-      #     upload_url: ${{ steps.release.outputs.upload_url }}
-      #     asset_path: django-docme/dist/django-docme-$VERSION.tar.gz
-      #     asset_name: azblogfilter.linux-amd64.tar.gz
-      #     asset_content_type: application/gzip
+      - name: upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: django-docme/dist/django-docme-$VERSION.tar.gz
+          asset_name: django-docme-$VERSION.tar.gz
+          asset_content_type: application/gzip
