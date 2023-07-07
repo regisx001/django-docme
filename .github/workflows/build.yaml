@@ -41,40 +41,38 @@ jobs:
 
       - name: testing
         run: cd django-docme && python test.py sdist
-
-      - name: Install Poetry
-        run: curl -sSL https://install.python-poetry.org | python - -y
+    
 
       - name: packaging
         run: |
           cd django-docme
-          poetry build
+          python3 setup.py sdist
       
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: django-docme
-      #     path: django-docme/dist/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: django-docme
+          path: django-docme/dist/
 
       
-      # - name: Create Release
-      #   id: create_release
-      #   uses: actions/create-release@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_PAT }} 
-      #   with:
-      #     tag_name: v${{env.PKG_VERSION}}
-      #     release_name: django-docme_v${{env.PKG_VERSION}}
-      #     body: Edit Later
-      #     draft: true
-      #     prerelease: false
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }} 
+        with:
+          tag_name: v${{env.PKG_VERSION}}
+          release_name: django-docme_v${{env.PKG_VERSION}}
+          body: Edit Later
+          draft: true
+          prerelease: false
 
 
-      # - name: upload artifact
-      #   uses: actions/upload-release-asset@v1
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.GH_PAT }}
-      #   with:
-      #     upload_url: ${{ steps.create_release.outputs.upload_url }}
-      #     asset_path: django-docme/dist/django-docme-${{env.PKG_VERSION}}.tar.gz
-      #     asset_name: django-docme-${{env.PKG_VERSION}}.tar.gz
-      #     asset_content_type: application/gzip
+      - name: upload artifact
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: django-docme/dist/django-docme-${{env.PKG_VERSION}}.tar.gz
+          asset_name: django-docme-${{env.PKG_VERSION}}.tar.gz
+          asset_content_type: application/gzip
