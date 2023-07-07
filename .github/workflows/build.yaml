@@ -15,7 +15,7 @@ on:
 jobs:
   execute_packaging:
     env:
-      VERSION: 0.1
+      P_VERSION: 0.1
     name: Install requirements and packaging the app 
     runs-on: ubuntu-latest
     steps:
@@ -63,7 +63,7 @@ jobs:
         with:
           draft: true
           prerelease: false
-          release_name: ${{ VERSION }}
+          release_name: ${{ P_VERSION }}
           tag_name: ${{ github.ref }}
 
 
