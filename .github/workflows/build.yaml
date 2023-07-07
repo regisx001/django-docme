@@ -33,12 +33,11 @@ jobs:
 
       - name: move package to the containing folder
         run:  mv ./docme ./django-docme && cd django-docme && ls
-        
 
-      # - name: packaging
-      #   run: python3 setup.py sdist
+      - name: packaging
+        run: python setup.py sdist
       
-      # - uses: actions/upload-artifact@v3
-      #   with:
-      #     name: django-docme
-      #     path: /dist/
+      - uses: actions/upload-artifact@v3
+        with:
+          name: django-docme
+          path: /dist/
