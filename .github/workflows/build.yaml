@@ -32,7 +32,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: move package to the containing folder
-        run:  mv ./docme ./django-docme
+        run:  mv ./docme ./django-docme && cd django-docme
 
       - name: packaging
         run: python3 setup.py sdist
