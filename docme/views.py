@@ -15,7 +15,7 @@ class DocsApiView(generics.ListCreateAPIView):
     serializer_class = serializers.PostGroupSerializer
 
 
-class RetrieveDocsPostApiView(generics.RetrieveAPIView):
+class RetrieveDocsPostApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Post.objects.all()
     serializer_class = serializers.PostSerializer
     lookup_field = "slug"
