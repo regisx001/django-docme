@@ -67,7 +67,7 @@ jobs:
         with:
           tag_name: v${{env.PKG_VERSION}}
           release_name: django-docme_v${{env.PKG_VERSION}}
-          body: ${{ steps.changelog.outputs.clean_changelog }}
+          body: Edit Later
           draft: true
           prerelease: false
 
