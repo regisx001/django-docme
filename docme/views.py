@@ -14,13 +14,18 @@ class DocsApiView(generics.ListCreateAPIView):
     serializer_class = serializers.PostGroupSerializer
 
 
-class RetrieveDocsPostApiView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = models.Post.objects.all()
-    serializer_class = serializers.PostSerializer
-    lookup_field = "slug"
-
-
 class DeletePostGroup(generics.RetrieveDestroyAPIView):
     queryset = models.PostGroup.objects.all()
     serializer_class = serializers.PostGroupSerializer
     lookup_field = "pk"
+
+
+class CreatePostAPIView(generics.CreateAPIView):
+    queryset = models.Post.objects.all()
+    serializer_class = serializers.PostSerializer
+
+
+class RetrieveDocsPostApiView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.Post.objects.all()
+    serializer_class = serializers.PostSerializer
+    lookup_field = "slug"

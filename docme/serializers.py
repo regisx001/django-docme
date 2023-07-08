@@ -6,14 +6,25 @@ class PostSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Post
-        fields = ["header", "body", "slug"]
+        fields = ["header", "body", "slug", "group"]
         extra_kwargs = {
-            "slug": {"read_only": True}
+            "slug": {"read_only": True},
+            "group": {"write_only": True},
+        }
+
+
+class DEFPostSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Post
+        fields = ["header", "body", "slug",]
+        extra_kwargs = {
+            "slug": {"read_only": True},
         }
 
 
 class PostGroupSerializer(serializers.ModelSerializer):
-    posts = PostSerializer(many=True, required=False)
+    posts = DEFPostSerializer(many=True, required=False)
 
     class Meta:
         model = models.PostGroup
