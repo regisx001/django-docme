@@ -9,7 +9,6 @@ def index(request):
 
 
 class DocsApiView(generics.ListCreateAPIView):
-    # queryset = models.PostGroup.objects.all()
     queryset = models.PostGroup.objects.prefetch_related(Prefetch(
         "posts", models.Post.objects.order_by("order")))
     serializer_class = serializers.PostGroupSerializer
@@ -19,3 +18,9 @@ class RetrieveDocsPostApiView(generics.RetrieveUpdateDestroyAPIView):
     queryset = models.Post.objects.all()
     serializer_class = serializers.PostSerializer
     lookup_field = "slug"
+
+
+class DeletePostGroup(generics.RetrieveDestroyAPIView):
+    queryset = models.PostGroup.objects.all()
+    serializer_class = serializers.PostGroupSerializer
+    lookup_field = "pk"
