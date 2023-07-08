@@ -65,9 +65,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }} 
         with:
-          tag_name: v${{env.PKG_VERSION}}
-          release_name: django-docme_v${{env.PKG_VERSION}}
-          body: Edit Later
+          tag_name: v${{ steps.changelog.outputs.tags }}
+          release_name: django-docme_v${{ steps.changelog.outputs.tags }}
+          body: ${{ steps.changelog.outputs.clean_changelog }}
           draft: true
           prerelease: false
 
