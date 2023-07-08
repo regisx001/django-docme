@@ -8,7 +8,7 @@ def index(request):
     return render(request, "docme/index.html")
 
 
-class DocsApiView(generics.ListAPIView):
+class DocsApiView(generics.ListCreateAPIView):
     # queryset = models.PostGroup.objects.all()
     queryset = models.PostGroup.objects.prefetch_related(Prefetch(
         "posts", models.Post.objects.order_by("order")))
