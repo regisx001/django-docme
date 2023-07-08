@@ -33,7 +33,7 @@ jobs:
         run: python -m pip install -r requirements.txt
 
       - name: install setuptools
-        run: python3 -m pip install --upgrade setuptools
+        run: python3 -m pip install --upgrade setuptools wheel twine
       
       - name: move package to the containing folder
         run:  mv ./docme ./django-docme && cd django-docme && ls
@@ -76,3 +76,12 @@ jobs:
           asset_path: django-docme/dist/django-docme-${{env.PKG_VERSION}}.tar.gz
           asset_name: django-docme-${{env.PKG_VERSION}}.tar.gz
           asset_content_type: application/gzip
+
+      - name: publish
+        env:
+          TWINE_USERNAME: ${{secrets.PYPI_USERNAME}}
+          TWINE_PASSWORD: ${{secrets.PYPI_PASSWORD}}
+        run: |
+            cd django-docme && rm -r dist
+            python setup.py sdist bdist_wheel
+            twine upload dist/*
