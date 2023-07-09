@@ -25,6 +25,7 @@ jobs:
       - name: build
         env:
           BASE_PATH: '/django-docme'
+          PUBLIC_GH_RELEASES_TK : ${{ secrets.PUBLIC_GH_RELEASES_TK }}
         run: |
           cd website
           pnpm run build

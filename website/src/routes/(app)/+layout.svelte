@@ -1,34 +1,25 @@
 <script lang="ts">
 	import { AppShell, Drawer, drawerStore } from '@skeletonlabs/skeleton';
-	// import Navbar from '$lib/Components/Navbar.svelte';
-	// import Navigation from '$lib/Components/Navigation.svelte';
-	import NavigationDrawer from '$lib/Components/NavigationDrawer.svelte';
+	import Footer from '$lib/Components/Footer.svelte';
 	import { onMount } from 'svelte';
-	// import { DocsUrl } from '$lib/utils';
-	// import { docsSettings } from '$lib/stores';
+	import { getReleases } from '$lib/utils';
+	import { PUBLIC_GH_RELEASES_TK } from '$env/static/public';
 
-	// let navUrls: any;
+	let releases = {};
 	let is_fetched = false;
 	onMount(async () => {
-		// 	navUrls = await (await fetch(DocsUrl)).json();
+		releases = await getReleases(PUBLIC_GH_RELEASES_TK);
 		is_fetched = true;
 	});
 </script>
 
 {#if is_fetched}
 	<AppShell>
-		<svelte:fragment slot="header">
-			<!-- <Navbar /> -->
-		</svelte:fragment>
-		<svelte:fragment slot="sidebarLeft">
-			<!-- <Navigation {navUrls} /> -->
-		</svelte:fragment>
+		<!-- <svelte:fragment slot="header"></svelte:fragment> -->
+		<!-- <svelte:fragment slot="sidebarLeft"></svelte:fragment> -->
 		<slot />
+		<svelte:fragment slot="pageFooter">
+			<Footer version={releases.tag_name} />
+		</svelte:fragment>
 	</AppShell>
 {/if}
-
-<!-- <Drawer>
-	{#if $drawerStore.id === 'nav'}
-		<NavigationDrawer {navUrls} />
-	{/if}
-</Drawer> -->
