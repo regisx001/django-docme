@@ -18,14 +18,15 @@ jobs:
 
 
       - name: Install dependencies
-        working-directory: /website
-        run: pnpm install
+        run: |
+          cd website
+          pnpm install
 
       - name: build
-        working-directory: /website
         env:
           BASE_PATH: '/django-docme'
         run: |
+          cd website
           pnpm run build
           touch build/.nojekyll
 
