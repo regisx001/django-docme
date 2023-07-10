@@ -1,7 +1,17 @@
 <script lang="ts">
+	import { popup } from '@skeletonlabs/skeleton';
+	import type { PopupSettings } from '@skeletonlabs/skeleton';
 	import GithubIcon from '$lib/Icons/github_icon.svelte';
+	import DotsIcon from '$lib/Icons/dots_icon.svelte';
 	import { base } from '$app/paths';
 	import { AppBar } from '@skeletonlabs/skeleton';
+
+	const popupCombobox: PopupSettings = {
+		event: 'focus-click',
+		target: 'popupCombobox',
+		placement: 'bottom',
+		closeQuery: '.listbox-item'
+	};
 </script>
 
 <AppBar>
@@ -14,14 +24,41 @@
 		</a>
 	</svelte:fragment>
 	<svelte:fragment slot="trail">
-		<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> Docs </a>
-		<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> About </a>
-		<a
-			class="btn-icon hover:variant-ghost-primary"
-			target="_blank"
-			href="https://github.com/zarqizoubir/django-docme"
-		>
-			<GithubIcon /></a
-		>
+		<div class="hidden md:flex flex-row justify-center items-center">
+			<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> Docs </a>
+			<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> About </a>
+			<a
+				class="btn-icon hover:variant-ghost-primary"
+				target="_blank"
+				href="https://github.com/zarqizoubir/django-docme"
+			>
+				<GithubIcon />
+			</a>
+		</div>
+		<div class="md:hidden" use:popup={popupCombobox}>
+			<button class="btn-icon hover:variant-ghost-primary">
+				<DotsIcon />
+			</button>
+			<nav class="list-nav card shadow-xl p-4 w-44" data-popup="popupCombobox">
+				<ul>
+					<li>
+						<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> Docs </a>
+					</li>
+					<li>
+						<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> About </a>
+					</li>
+					<li>
+						<a
+							class="btn hover:variant-ghost-primary font-semibold"
+							target="_blank"
+							href="https://github.com/zarqizoubir/django-docme"
+						>
+							github
+						</a>
+					</li>
+				</ul>
+				<div class="arrow bg-surface-100-800-token" />
+			</nav>
+		</div>
 	</svelte:fragment>
 </AppBar>

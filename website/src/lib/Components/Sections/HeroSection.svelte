@@ -3,11 +3,11 @@
 </script>
 
 <main class="h-full p-4 lg:p-10">
-	<div class="relative rounded-xl bg-[url('/bg_home.svg')] bg-cover bg-no-repeat h-full">
+	<div class="relative rounded-xl md:bg-[url('/bg_home.svg')] bg-cover bg-no-repeat h-full">
 		<div
 			class="
 		card card-hover w-full max-w-xl
-		absolute top-[40%] left-[50%] lg:left-[30%] translate-x-[-50%] translate-y-[-50%]
+		absolute top-[50%] lg:top-[40%] left-[50%] lg:left-[30%] translate-x-[-50%] translate-y-[-50%]
 		"
 		>
 			<header class="card-header m-4">
