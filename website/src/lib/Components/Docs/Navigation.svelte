@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { current_page, current_header, current_title, title } from '$lib/stores';
+	import { current_page, current_header, current_title, title, dataUrl } from '$lib/stores';
 
-	export let navUrls: any;
+	export let navUrls: any = {};
 	$: current_query = $current_page;
 
 	$: classesActive = (slug: string) => (slug === current_query ? '!bg-primary-500' : '');
@@ -20,6 +20,7 @@
 								$title = `${post.header} | Skeleton UI`;
 								$current_header = navUrl.title;
 								$current_title = post.header;
+								$dataUrl = post.body;
 							}}
 							class="btn w-full items-start {classesActive(post.slug)}"
 						>

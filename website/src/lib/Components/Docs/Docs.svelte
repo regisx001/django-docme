@@ -2,7 +2,7 @@
 	import Code from '$lib/Code.svelte';
 	import { current_title, current_header } from '$lib/stores';
 	import SvelteMarkdown from 'svelte-markdown';
-	export let data: any;
+	export let data: any = '# This is Just for test';
 </script>
 
 <article class="mx-[10%] mt-5 mb-10 prose dark:prose-invert max-w-full">
@@ -13,7 +13,7 @@
 	</ol>
 
 	<SvelteMarkdown
-		source={data.body}
+		source={data}
 		renderers={{
 			code: Code
 		}}

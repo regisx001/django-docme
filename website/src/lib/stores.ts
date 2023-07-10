@@ -15,3 +15,5 @@ export let current_title: Writable<string> = writable("Introduction")
 
 
 export let docsSettings: Writable<DocsSettings> = writable({ theme: "skeleton" })
+
+export let dataUrl: Writable<string> = writable("introduction/introduction.md")

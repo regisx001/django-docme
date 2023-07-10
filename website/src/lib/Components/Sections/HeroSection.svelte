@@ -30,7 +30,7 @@
 				</blockquote>
 			</section>
 			<footer class="card-footer flex gap-2 m-4">
-				<a class="btn variant-filled-secondary rounded-lg font-semibold w-full" href="{base}/">
+				<a class="btn variant-filled-secondary rounded-lg font-semibold w-full" href="{base}/docs">
 					Get Started
 				</a>
 				<a class="btn variant-filled-tertiary rounded-lg font-semibold w-full" href="{base}/">
