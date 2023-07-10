@@ -15,4 +15,6 @@
 	<title>{$current_title} | Django docme Docs</title>
 </svelte:head>
 
-<Docs {data} />
+<!-- <Docs {data} /> -->
+
+{data}
