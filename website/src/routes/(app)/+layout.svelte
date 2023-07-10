@@ -9,7 +9,7 @@
 	let releases: any = {};
 	let is_fetched = false;
 	onMount(async () => {
-		// releases = await getReleases(PUBLIC_GH_RELEASES_TK);
+		releases = await getReleases(PUBLIC_GH_RELEASES_TK);
 		is_fetched = true;
 	});
 </script>
@@ -17,7 +17,7 @@
 {#if is_fetched}
 	<AppShell>
 		<svelte:fragment slot="header">
-			<AppBar />
+			<AppBar version={releases.tag_name} />
 		</svelte:fragment>
 		<!-- <svelte:fragment slot="sidebarLeft"></svelte:fragment> -->
 

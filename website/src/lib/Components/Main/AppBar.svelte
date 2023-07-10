@@ -6,6 +6,7 @@
 	import { base } from '$app/paths';
 	import { AppBar } from '@skeletonlabs/skeleton';
 
+	export let version: string = '';
 	const popupCombobox: PopupSettings = {
 		event: 'focus-click',
 		target: 'popupCombobox',
@@ -27,6 +28,7 @@
 		<div class="hidden md:flex flex-row justify-center items-center">
 			<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> Docs </a>
 			<a class="btn hover:variant-ghost-primary font-semibold" href="{base}/"> About </a>
+			<span class="mx-2 text-sm text-gray-500">Version {version}</span>
 			<a
 				class="btn-icon hover:variant-ghost-primary"
 				target="_blank"
@@ -55,6 +57,9 @@
 						>
 							github
 						</a>
+					</li>
+					<li class="text-center">
+						<span class="text-sm text-gray-500">Version {version}</span>
 					</li>
 				</ul>
 				<div class="arrow bg-surface-100-800-token" />
