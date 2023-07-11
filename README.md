@@ -3,7 +3,7 @@
 # django-docme :
 
 ---
-Django Document me 
+Django Document me
 
 package that let you create your docs not coding it  😉😉 .
 
