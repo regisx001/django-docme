@@ -21,6 +21,33 @@
 				{ header: 'Introduction', slug: 'introduction', body: 'introduction/introduction.md' },
 				{ header: 'Get Started', slug: 'get-started', body: 'introduction/get-started.md' }
 			]
+		},
+		{
+			title: 'Api Endpoints',
+			posts: [
+				{ header: '(GET) /docme', slug: 'get/docme', body: 'api/getdocme.md' },
+				{ header: '(POST) /docme', slug: 'post/docme', body: 'api/postdocme.md' },
+				{
+					header: '(POST) /docme/posts/new',
+					slug: 'post/docme/posts/new',
+					body: 'api/postdocmepostnew.md'
+				},
+				{
+					header: '(GET) /docme/{slug}',
+					slug: 'get/docme/{slug}',
+					body: 'api/getdocme{slug}.md'
+				},
+				{
+					header: '(PUT) /docme/{slug}',
+					slug: 'put/docme/{slug}',
+					body: 'api/putdocme{slug}.md'
+				},
+				{
+					header: '(DELETE) /docme/{slug}',
+					slug: 'delete/docme/{slug}',
+					body: 'api/deletedocme{slug}.md'
+				}
+			]
 		}
 	];
 </script>
