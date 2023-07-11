@@ -1,12 +1,17 @@
 <script lang="ts">
-	import { popup } from '@skeletonlabs/skeleton';
-	import type { PopupSettings } from '@skeletonlabs/skeleton';
+	import {
+		popup,
+		drawerStore,
+		type DrawerSettings,
+		type PopupSettings,
+		AppBar
+	} from '@skeletonlabs/skeleton';
 	import GithubIcon from '$lib/Icons/github_icon.svelte';
 	import DotsIcon from '$lib/Icons/dots_icon.svelte';
 	import { base } from '$app/paths';
-	import { AppBar } from '@skeletonlabs/skeleton';
 
 	export let version: string = '';
+	const settings: DrawerSettings = { id: 'nav', width: 'w-96' };
 	const popupCombobox: PopupSettings = {
 		event: 'focus-click',
 		target: 'popupCombobox',

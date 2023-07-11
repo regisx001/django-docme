@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { drawerStore } from '@skeletonlabs/skeleton';
-	import { current_page, current_header, current_title, title } from '$lib/stores';
+	import { current_page, current_header, current_title, title, dataUrl } from '$lib/stores';
 
 	export let navUrls: any;
 	$: current_query = $current_page;
@@ -9,7 +9,7 @@
 </script>
 
 <section class="flex h-full flex-row">
-	<nav class="list-nav px-4 flex flex-col w-96">
+	<nav class="list-nav py-6 px-4 w-96">
 		{#each navUrls as navUrl}
 			<h1 class="h3 font-bold px-4 my-4">{navUrl.title}</h1>
 			<ul class="w-full my-2">
@@ -21,6 +21,7 @@
 								$title = `${post.header} | Skeleton UI`;
 								$current_header = navUrl.title;
 								$current_title = post.header;
+								$dataUrl = post.body;
 								drawerStore.close();
 							}}
 							class="btn w-full items-start {classesActive(post.slug)}"
@@ -32,6 +33,9 @@
 			</ul>
 			<hr />
 		{/each}
+		<!-- <pre class="">
+				{JSON.stringify(navUrls, null, 2)}
+			</pre> -->
 	</nav>
 	<span class="divider-vertical h-full" />
 </section>
