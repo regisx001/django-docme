@@ -11,9 +11,6 @@
 			data = await res.text();
 		});
 	}
-	// onMount(async () => {
-	// 	data = (await import('$lib/Content/introduction')).introduction;
-	// });
 </script>
 
 <svelte:head>
